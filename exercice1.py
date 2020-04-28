@@ -17,8 +17,12 @@ class Node:
         return self.__right
     def getl(self):
         return self.__left
+    def __str__(self):
+        return (str(self.__val))
 
-#n = Node(12,17,5)
-#print(n.getr())
-#n.setl(7)
-#print(n.getl())
+if __name__ == '__main__':
+    n = Node(12,17,5)
+    print(n)
+    #print(n.getr())
+    #n.setl(7)
+    #print(n.getl())
