@@ -39,9 +39,40 @@ class BinaryTree:
 
     def sumValues(self,node):
         if node is None:
-            return 0
+            return +0
         else :
             return self.sumValues(node.getr()) + self.sumValues(node.getl()) + node.getval()
+
+    def numberLeaves(self,node):
+        if node is None:
+            return +0
+        elif node.getl() is None and node.getr() is None:
+            return 1
+        else:
+            return self.numberLeaves(node.getr()) + self.numberLeaves(node.getl())
+
+    def numberInternalNodes(self,node):
+        #return self.size(node) - self.numberLeaves(node) #méthode plus simple
+        if node is None:
+            return +0
+        elif node.getl() is None and node.getr() is None:
+            return +0
+        else:
+            return 1 + self.numberInternalNodes(node.getr()) + self.numberInternalNodes(node.getl())
+
+    def height(self,node):
+        if node is None:
+            return - 1
+        else:
+            return 1 + max(self.height(node.getr()), self.height(node.getl()))
+
+    """def belongs(self, node, val): #verifie si val est une val de l'arbre
+        if node == val:
+            return True
+        elif node.getl() is None and node.getr() is None:
+            return False
+        else:
+            return self.belongs(node.getr(),val) + self.belongs(node.getl(),val)"""
 
 N21 = Node(21, None, None)
 N18 = Node(18, None, None)
@@ -56,3 +87,7 @@ Tree = BinaryTree(N12)
 print(Tree.size(Tree.getroot())) #9
 print(Tree.printValues(Tree.getroot()))
 print(Tree.sumValues(Tree.getroot())) #105
+print(Tree.numberLeaves(Tree.getroot())) #4
+print(Tree.numberInternalNodes(Tree.getroot())) #5
+print(Tree.height(Tree.getroot())) #3
+#print(Tree.belongs(Tree.getroot(),17)) #True
