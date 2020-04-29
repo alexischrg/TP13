@@ -22,17 +22,14 @@ class BinaryTree:
     """def size(self, node): #codeprof
         if node is None:
             return 0
+        else:
+            return self.size(node.getLeft()) + 1 + self.size(node.getRight())
 
-    else:
-    return self.size(node.getLeft()) + 1 + self.size(node.getRight())
-
-    
     def printValues(self, node): #codeprof
         if node is None:
             return ""
-
-    else:
-    return self.printValues(node.getLeft()) + self.printValues(node.getRight()) + " " + str(node.getVal())"""
+        else:
+            return self.printValues(node.getLeft()) + self.printValues(node.getRight()) + " " + str(node.getVal())"""
 
     def printValues(self, node):
         if node is None:
@@ -40,11 +37,11 @@ class BinaryTree:
         else:
             return str(node.getval()) + " " + self.printValues(node.getr()) + self.printValues(node.getl())
 
-    def sumValues(self,node): #à compléter
+    def sumValues(self,node):
         if node is None:
-            return ""
+            return 0
         else :
-            return node.getval + self.sumValues(node.getr()) + self.sumValues(node.getl())
+            return self.sumValues(node.getr()) + self.sumValues(node.getl()) + node.getval()
 
 N21 = Node(21, None, None)
 N18 = Node(18, None, None)
